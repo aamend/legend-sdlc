@@ -26,7 +26,7 @@
     <name>Legend SDLC</name>
     <groupId>org.finos.legend.sdlc</groupId>
     <artifactId>legend-sdlc</artifactId>
-    <version>0.66.1-SNAPSHOT</version>
+    <version>1.0-DELTA</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -65,8 +65,8 @@
         <maven.compiler.release>8</maven.compiler.release>
 
         <!-- Legend dependency versions -->
-        <legend.engine.version>2.54.1</legend.engine.version>
-        <legend.pure.version>1.47.0</legend.pure.version>
+        <legend.engine.version>1.0-DELTA</legend.engine.version>
+        <legend.pure.version>1.0-DELTA</legend.pure.version>
         <legend.shared.version>0.18.0</legend.shared.version>
 
         <!-- Dependency versions -->
@@ -260,7 +260,7 @@
                             <configLocation>checkstyle.xml</configLocation>
                             <logViolationsToConsole>true</logViolationsToConsole>
                             <!-- NOTE: change this to true before OSS -->
-                            <failOnViolation>true</failOnViolation>
+                            <failOnViolation>false</failOnViolation>
                             <violationSeverity>warning</violationSeverity>
                             <sourceDirectories>
                                 <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
@@ -281,7 +281,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <configuration>
-                    <failOnWarning>true</failOnWarning>
+                    <failOnWarning>false</failOnWarning>
                     <ignoreNonCompile>true</ignoreNonCompile>
                 </configuration>
                 <executions>
@@ -1302,19 +1302,18 @@
 
     <repositories>
         <repository>
-            <id>ossrh</id>
-            <name>OSSRH Public Group</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>ossrh-releases</id>
-            <name>OSSRH Public Releases Group</name>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+            <id>legend</id>
+            <name>local nexus</name>
+            <url>http://18.214.204.50:8081/repository/legend/</url>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>legend</id>
+            <url>http://18.214.204.50:8081/repository/legend/</url>
+        </repository>
+    </distributionManagement>
 
     <profiles>
         <profile>
